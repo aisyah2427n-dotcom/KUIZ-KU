@@ -1,0 +1,35 @@
+<?php
+session_start();
+$benar = $_SESSION['score_benar'];
+$salah = $_SESSION['score_salah'];
+$total = 10; // Sesuaikan dengan total soal kamu
+$nilai = ($benar / $total) * 100;
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body { background: #ffdae9; font-family: 'Press Start 2P'; color: #d14781; text-align: center; padding-top: 50px; }
+        .result-box { background: white; border: 8px solid #d14781; padding: 40px; display: inline-block; box-shadow: 15px 15px 0 #f8bbd0; }
+        .score { font-size: 60px; margin: 30px 0; color: #ff85a1; }
+    </style>
+</head>
+<body>
+    <!-- Sound Effect (Auto Play Lonceng/Tada) -->
+    <audio autoplay>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="result-box">
+        <h1>GAME OVER! 🐾</h1>
+        <hr>
+        <p style="color: #4CAF50;">BENAR: <?php echo $benar; ?></p>
+        <p style="color: #F44336;">SALAH: <?php echo $salah; ?></p>
+        <div class="score"><?php echo $nilai; ?></div>
+        <p>RANK: <?php echo $nilai >= 80 ? 'DIAMOND CAT 💎' : 'PINK DIRT 🌸'; ?></p>
+        <br>
+        <a href="reset.php" style="color: #d14781;">[ MAIN LAGI ]</a>
+    </div>
+</body>
+</html>

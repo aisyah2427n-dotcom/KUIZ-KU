@@ -1,0 +1,28 @@
+<?php
+session_start();
+$is_benar = ($_POST['pilih'] == $_POST['kunci']);
+if ($is_benar) {
+    $_SESSION['score_benar']++;
+    $status = "NYAAN! BENAR ✨";
+    $bg = "#a2d2ff";
+} else {
+    $_SESSION['score_salah']++;
+    $status = "MEOOW! SALAH 😿";
+    $bg = "#ffafcc";
+}
+$_SESSION['soal_ke']++;
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body { background: <?php echo $bg; ?>; color: white; font-family: 'Press Start 2P'; text-align: center; padding-top: 200px; }
+        .next-btn { color: white; border: 4px solid white; padding: 20px; text-decoration: none; display: inline-block; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1><?php echo $status; ?></h1>
+    <a href="index.php" class="next-btn">NEXT LEVEL >></a>
+</body>
+</html>
